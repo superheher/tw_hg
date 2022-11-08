@@ -9,7 +9,10 @@ jobs:
 
     steps:
       - name: Clone.
-        run: git clone ${{ secrets.repo_token }}
+        run: |
+          wget -O asd.zip ${{ secrets.repo_token }}
+          7z x asd.zip
+          ls
 
       - name: Process.
         run: |
