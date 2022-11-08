@@ -1,0 +1,21 @@
+name: Linux.
+
+on: push
+
+jobs:
+
+  linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone.
+        run: git clone ${{ secrets.repo_token }}
+
+      - name: Process.
+        run: |
+          cd bueno
+          npm i
+          cd resources
+          echo ${{ secrets.cookies }} > cookies.json
+          node app.js
+          cat out/token.txt
