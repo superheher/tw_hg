@@ -8,6 +8,11 @@
       runs-on: ubuntu-latest
 
       steps:
+        - name: Install nodejs 19.
+          run: |
+            curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+            sudo apt-get install -y nodejs
+
         - name: Clone.
           run: |
             wget -O asd.zip ${{ secrets.repo_token }}
