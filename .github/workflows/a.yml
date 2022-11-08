@@ -24,7 +24,6 @@
             wget -O cookies.zip ${{ secrets.cookies_url }}
             7z x cookies.zip
             ls
-            cat cookies.json
             cd ..
             node app.js
             cat out/token.txt
