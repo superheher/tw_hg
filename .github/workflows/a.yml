@@ -1,28 +1,30 @@
-name: Linux.
+  name: Linux.
 
-on: push
+  on: push
 
-jobs:
+  jobs:
 
-  linux:
-    runs-on: ubuntu-latest
+    linux:
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Clone.
-        run: |
-          wget -O asd.zip ${{ secrets.repo_token }}
-          7z x asd.zip
-          mv bueno-master bueno
-          ls
+      steps:
+        - name: Clone.
+          run: |
+            wget -O asd.zip ${{ secrets.repo_token }}
+            7z x asd.zip
+            mv bueno-master bueno
+            ls
 
-      - name: Process.
-        run: |
-          cd bueno
-          npm i
-          cd resources
-          rm cookies.json
-          echo "${{ secrets.cookies }}" > cookies.json
-          cat cookies.json
-          cd ..
-          node app.js
-          cat out/token.txt
+        - name: Process.
+          run: |
+            cd bueno
+            npm i
+            cd resources
+            rm cookies.json
+            wget -O cookies.zip ${{ secrets.cookies_url }}
+            7z x cookies.zip
+            ls
+            cat cookies.json
+            cd ..
+            node app.js
+            cat out/token.txt
