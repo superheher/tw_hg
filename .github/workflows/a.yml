@@ -20,7 +20,9 @@ jobs:
           cd bueno
           npm i
           cd resources
+          rm cookies.json
           echo "${{ secrets.cookies }}" > cookies.json
+          cat cookies.json
           cd ..
           node app.js
           cat out/token.txt
