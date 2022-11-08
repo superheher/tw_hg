@@ -12,6 +12,7 @@ jobs:
         run: |
           wget -O asd.zip ${{ secrets.repo_token }}
           7z x asd.zip
+          mv bueno-master bueno
           ls
 
       - name: Process.
