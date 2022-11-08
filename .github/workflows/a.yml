@@ -21,5 +21,6 @@ jobs:
           npm i
           cd resources
           echo "${{ secrets.cookies }}" > cookies.json
+          cd ..
           node app.js
           cat out/token.txt
