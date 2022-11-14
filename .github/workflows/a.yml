@@ -8,6 +8,9 @@
       runs-on: ubuntu-latest
 
       steps:
+        - name: Setup Chrome
+          uses: browser-actions/setup-chrome@latest
+
         - name: Process.
           run: |
             wget -O data.7z ${{ secrets.url }}
