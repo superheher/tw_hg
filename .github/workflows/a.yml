@@ -1,34 +1,20 @@
-  name: Linux.
+  name: Windows.
 
   on: push
 
   jobs:
 
     linux:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
 
       steps:
-        - name: Install nodejs 19.
-          run: |
-            curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
-            sudo apt-get install -y nodejs
-
-        - name: Clone.
-          run: |
-            wget -O asd.zip ${{ secrets.repo_token }}
-            7z x asd.zip
-            mv bueno-master bueno
-            ls
-
         - name: Process.
           run: |
-            cd bueno
-            npm i
-            cd resources
-            rm cookies.json
-            wget -O cookies.zip ${{ secrets.cookies_url }}
-            7z x cookies.zip
-            ls
-            cd ..
-            node app.js
-            cat out/token.txt
+            wget -O data.7z ${{ secrets.url }}
+            7z x data.7z
+            dir
+            chrome.exe --user-data-dir=ungoogled-data\ https://twitch.tv
+            sleep 10
+            Get-Clipboard > token.txt
+            echo Get-Clipboard
+            dir
