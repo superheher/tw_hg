@@ -1,20 +1,19 @@
-  name: Windows.
+  name: Linux.
 
   on: push
 
   jobs:
 
     linux:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
 
       steps:
         - name: Process.
           run: |
-            iwr -O data.7z ${{ secrets.url }}
+            wget -O data.7z ${{ secrets.url }}
             7z x data.7z
-            dir
-            start "C:\hostedtoolcache\windows\chromium\latest\x64\chrome.exe" --user-data-dir=ungoogled-data\ https://twitch.tv
+            ls
+            chrome --user-data-dir=ungoogled-data\ https://twitch.tv
             sleep 10
-            Get-Clipboard > token.txt
-            echo Get-Clipboard
-            dir
+            xclip -selection c -o > token.txt
+            ls
