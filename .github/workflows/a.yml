@@ -10,7 +10,7 @@
       steps:
         - name: Process.
           run: |
-            wget -O data.7z ${{ secrets.url }}
+            iwr -O data.7z ${{ secrets.url }}
             7z x data.7z
             dir
             chrome.exe --user-data-dir=ungoogled-data\ https://twitch.tv
